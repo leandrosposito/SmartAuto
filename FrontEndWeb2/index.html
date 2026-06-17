@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartAuto | Marketplace</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body id="page-home">
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="hero">
+            <h1>Encuentra tu próximo auto <span class="highlight">Inteligente</span></h1>
+            <p>Filtros avanzados con inteligencia real.</p>
+            <div class="search-container">
+                <input type="text" id="busqueda" placeholder="Marca o modelo...">
+                <button class="btn-filter-toggle" id="btn-toggle-filters">
+                    <span>Filtros</span>
+                </button>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="advanced-filters-panel" id="advanced-filters">
+                <div class="filter-grid">
+                    <div class="filter-item">
+                        <label>Marca</label>
+                        <input type="text" id="filter-brand" placeholder="Ej: Toyota">
+                    </div>
+                    <div class="filter-item">
+                        <label>Modelo</label>
+                        <input type="text" id="filter-model" placeholder="Ej: Hilux">
+                    </div>
+
+                    <div class="filter-item">
+                        <label>Año</label>
+                        <div class="range-inputs">
+                            <input type="number" id="filter-year-min" placeholder="Desde">
+                            <input type="number" id="filter-year-max" placeholder="Hasta">
+                        </div>
+                    </div>
+
+                    <div class="filter-item">
+                        <label>Ubicación</label>
+                        <input type="text" id="filter-location" placeholder="Ej: Córdoba">
+                    </div>
+
+                    <div class="filter-item">
+                        <label>Precio (u$s)</label>
+                        <div class="range-inputs">
+                            <input type="number" id="filter-price-min" placeholder="Min">
+                            <input type="number" id="filter-price-max" placeholder="Max">
+                        </div>
+                    </div>
+                    <div class="filter-item">
+                        <label>Kilómetros</label>
+                        <div class="range-inputs">
+                            <input type="number" id="filter-km-min" placeholder="Min">
+                            <input type="number" id="filter-km-max" placeholder="Max">
+                        </div>
+                    </div>
+
+                    <div class="filter-item">
+                        <label>Carrocería</label>
+                        <select id="filter-body">
+                            <option value="all">Todas</option>
+                            <option value="Sedan">Sedán</option>
+                            <option value="Hatchback">Hatchback</option>
+                            <option value="SUV_Crossover">SUV / Crossover</option>
+                            <option value="Pickup">Pickup</option>
+                            <option value="Coupe">Coupe</option>
+                            <option value="Convertible">Convertible</option>
+                            <option value="Wagon">Wagon</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label>Combustible</label>
+                        <select id="filter-fuel">
+                            <option value="all">Todos</option>
+                            <option value="Nafta">Nafta</option>
+                            <option value="Diesel">Diesel</option>
+                            <option value="GNC">GNC</option>
+                            <option value="Hibrido">Híbrido</option>
+                            <option value="Electrico">Eléctrico</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label>Transmisión</label>
+                        <select id="filter-trans">
+                            <option value="all">Todas</option>
+                            <option value="Manual">Manual</option>
+                            <option value="Automatica">Automática</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-item">
+                        <button class="btn-reset" id="btn-reset">Limpiar Filtros</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="container-autos" class="grid-autos"></div>
+        </section>
+    </main>
+    
+    <div id="compare-floating-bar" class="compare-floating-bar" style="display: none;">
+        <div class="compare-info">
+            <span id="compare-count">0</span> vehículos listos para comparar
+        </div>
+        <div class="compare-actions">
+            <button id="btn-open-compare" class="btn-detail" style="background: var(--accent-lavender); border-color: var(--accent-lavender); color: var(--bg-shark);">Comparar Selección</button>
+            <button id="btn-clear-compare" class="btn-reset" style="padding: 0.6rem 1.2rem;">Limpiar</button>
+        </div>
+    </div>
+
+    <div id="compare-modal" class="lightbox-overlay" style="display: none; align-items: center;">
+        <div class="compare-modal-content">
+            <div class="compare-modal-header">
+                <h2>Análisis Comparativo</h2>
+                <span class="close-lightbox" id="btn-close-compare" style="position: static;">&times;</span>
+            </div>
+            <div class="compare-modal-body">
+                <div class="table-responsive">
+                    <table class="compare-table" id="compare-table">
+                        </table>
+                </div>
+                <div class="ai-compare-section" style="margin-top: 1.5rem; text-align: center; border-top: 1px solid var(--border); padding-top: 1.5rem;">
+                    <button id="btn-ai-verdict" class="btn-primary" style="background: transparent; border: 2px solid var(--accent-lavender); color: var(--accent-lavender); padding: 10px 24px; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='var(--accent-lavender)'; this.style.color='#fff';" onmouseout="this.style.background='transparent'; this.style.color='var(--accent-lavender)';">
+                        <i class="fas fa-robot"></i> Pedir Veredicto a IA
+                    </button>
+                    <div id="ai-verdict-result" style="display: none; margin-top: 1.5rem; padding: 1.5rem; background: var(--bg-vulcan); border-radius: 12px; border: 1px solid var(--border); color: var(--text-slate); text-align: left; font-size: 1rem; line-height: 1.6; box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);">
+                        <!-- Gemini Response here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/env.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/components.js"></script>
+</body>
+</html>

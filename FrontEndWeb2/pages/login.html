@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartAuto | Login</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body id="page-profile" class="login-page">
+
+    <div id="header-placeholder"></div>
+
+    <div class="login-wrapper">
+        <div class="login-card" id="card-login">
+            <h2>Ingresar</h2>
+            <p>Accede para gestionar tus publicaciones con IA.</p>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <input type="email" id="login-email" placeholder="Email (ej: tu@email.com)" required>
+                </div>
+                
+                <div class="form-group input-with-icon">
+                    <input type="password" id="login-password" placeholder="Contraseña" required>
+                    <button type="button" class="btn-toggle-pass" id="toggle-login-pass">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </button>
+                </div>
+                
+                <button type="submit" class="login-submit-btn">ENTRAR AL SISTEMA</button>
+            </form>
+
+            <div class="footer-link">
+                ¿No tenés cuenta? <a href="#" id="link-to-register">Registrate</a>
+            </div>
+        </div>
+
+        <div class="login-card" id="card-register" style="display: none; max-width: 500px;">
+            <h2>Crear Cuenta</h2>
+            <p>Completá tus datos para unirte a SmartAuto.</p>
+
+            <div class="segmented-control role-selector" id="reg-rol-selector">
+                <input type="radio" name="reg_role" id="reg_role_comprador" value="comprador" checked>
+                <label for="reg_role_comprador" class="role-label-left">Comprador</label>
+                
+                <input type="radio" name="reg_role" id="reg_role_vendedor" value="vendedor">
+                <label for="reg_role_vendedor" class="role-label-right">Vendedor</label>
+                
+                <div class="segmented-control__slider"></div>
+            </div>
+
+            <form id="register-form">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <input type="text" id="reg-nombre" placeholder="Nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="reg-apellido" placeholder="Apellido" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="reg-dni" placeholder="DNI" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="reg-tel" placeholder="Teléfono" required>
+                    </div>
+                    <div class="form-group" style="grid-column: span 2;">
+                        <input type="text" id="reg-dir" placeholder="Dirección completa" required>
+                    </div>
+                    <div class="form-group" style="grid-column: span 2;">
+                        <input type="email" id="reg-email" placeholder="Email (ej: tu@email.com)" required>
+                    </div>
+                    
+                    <div class="form-group input-with-icon">
+                        <input type="password" id="reg-pass" placeholder="Contraseña" required>
+                        <button type="button" class="btn-toggle-pass" id="toggle-reg-pass">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="form-group input-with-icon">
+                        <input type="password" id="reg-pass-confirm" placeholder="Confirmar Contraseña" required>
+                        <button type="button" class="btn-toggle-pass" id="toggle-reg-pass-confirm">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <button type="submit" class="login-submit-btn">REGISTRARME</button>
+            </form>
+
+            <div class="footer-link">
+                ¿Ya tenés cuenta? <a href="#" id="link-to-login">Ingresar</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/env.js"></script>
+    <script src="../js/database.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/components.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartAuto | Detalle</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/detail.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body class="bg-dark">
+
+    <div id="header-placeholder"></div>
+
+    <main class="product-container" id="car-detail-content">
+        <div class="loading">Cargando datos del vehículo...</div>
+    </main>
+
+    <div id="photo-lightbox" class="lightbox-overlay">
+        <span class="close-lightbox">&times;</span>
+        <span class="nav-arrow prev-arrow" id="prev-btn">&#10094;</span>
+        <div class="lightbox-image-container">
+            <img class="lightbox-content" id="lightbox-image" src="" alt="Cargando...">
+        </div>
+        <span class="nav-arrow next-arrow" id="next-btn">&#10095;</span>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="../js/env.js"></script>
+    <script src="../js/database.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/detail.js"></script>
+    <script src="../js/components.js"></script>
+</body>
+</html>
